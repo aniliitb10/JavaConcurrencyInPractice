@@ -1,5 +1,7 @@
 package ch02_counter;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -13,8 +15,7 @@ class CounterTest {
     private final int repeatCount = 10;
 
     private void logDescription(String prefix, CounterInterface counter) {
-        System.out.println(prefix + ", Task count: " + this.taskCount + ", Thread count: " + this.threadCount +
-                ", Difference: " + (this.taskCount - counter.getCount()));
+        System.out.println(prefix + ", Task count: " + this.taskCount + ", Thread count: " + this.threadCount + ", Difference: " + (this.taskCount - counter.getCount()));
     }
 
     void counterTest(CounterInterface counter) {
@@ -26,7 +27,7 @@ class CounterTest {
         }
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void safeCounterTest() {
         for (int i = 0; i < this.repeatCount; ++i) {
             CounterInterface counter = new SafeCounter();
@@ -36,7 +37,7 @@ class CounterTest {
         }
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void unsafeCounterTest() {
         for (int i = 0; i < this.repeatCount; ++i) {
             CounterInterface counter = new UnsafeCounter();
